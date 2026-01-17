@@ -1,0 +1,831 @@
+proxy-groups:
+  - name: 🚀 国外流量
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+  - name: 🚀 手动选择1
+    include-all: true
+    type: select
+  - name: 🚀 手动选择2
+    include-all: true
+    type: select
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+      - 🔯 故障转移
+      - 🔮 负载均衡
+  - name: 🚀 免流
+    include-all: true
+    filter: (80|443|TCP|浙停|广停|绿通)
+    type: select
+  - name: ♻️ 自动选择
+    type: url-test
+    include-all: true
+    filter: (^(?!.*(剩余流量|到期时间|过期时间|官网地址|产品名称|先购买套餐|流量消耗|唯一官网|更新订阅)).*)
+    interval: 180
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 🔯 故障转移
+    type: fallback
+    include-all: true
+    filter: (^(?!.*(剩余流量|到期时间|过期时间|官网地址|产品名称|先购买套餐|流量消耗|唯一官网|更新订阅)).*)
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 🔮 负载均衡
+    type: load-balance
+    include-all: true
+    filter: (^(?!.*(剩余流量|到期时间|过期时间|官网地址|产品名称|先购买套餐|流量消耗|唯一官网|更新订阅)).*)
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 📲 Telegram
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 📺 Bilibili
+    type: select
+    proxies:
+      - 🎯 国内流量
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - "(澳门|MO|🇲🇴|澳)"
+  - name: 📹 YouTube
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+      - 🔯 故障转移
+      - 🔮 负载均衡
+  - name: 💽 ParamountPlus
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🍍 Hulu
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 📀 PrimeVideo
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🎦 HBO
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🚩 社交平台IP归属地
+    type: select
+    proxies:
+      - DIRECT
+      - 🎯 国内流量
+      - 🚀 国外流量
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🎥 Netflix
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🎥 DisneyPlus
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🎬 EMBY
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🎵 TikTok
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🎵 Spotify
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 📺 巴哈姆特
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - ♻️ 自动选择
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🌍 国外媒体
+    type: select
+    proxies:
+      - 🚀 国外流量
+      - 🎯 国内流量
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+      - 🔯 故障转移
+      - 🔮 负载均衡
+  - name: 🌏 国内媒体
+    type: select
+    proxies:
+      - 🎯 国内流量
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: Ⓜ️ 微软云盘
+    type: select
+    proxies:
+      - 🎯 国内流量
+      - 🚀 国外流量
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🎯 国内流量
+      - 🚀 国外流量
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🎯 国内流量
+      - 🚀 国外流量
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🎮 游戏平台
+    type: select
+    proxies:
+      - 🎯 国内流量
+      - 🚀 国外流量
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+      - 🇸🇬 新加坡节点
+      - 🇭🇰 香港节点
+      - 🇹🇼 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇸 美国节点
+      - 🇰🇷 韩国节点
+      - 🇮🇳 印度节点
+      - 🇬🇧 英国节点
+      - 🇫🇷 法国节点
+      - 🇷🇺 俄罗斯节点
+      - 🇩🇪 德国节点
+  - name: 🎯 国内流量
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 免流
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🛑 广告拦截
+    type: select
+    proxies:
+      - REJECT
+      - 🎯 国内流量
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🍃 应用净化
+    type: select
+    proxies:
+      - REJECT
+      - 🎯 国内流量
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🆎 AdBlock
+    type: select
+    proxies:
+      - REJECT
+      - 🎯 国内流量
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🛡️ 隐私防护
+    type: select
+    proxies:
+      - REJECT
+      - 🎯 国内流量
+      - 🚀 手动选择1
+      - 🚀 手动选择2
+  - name: 🇭🇰 香港节点
+    include-all: true
+    filter: (🇭🇰|港|HK|Hong Kong)
+    type: url-test
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 🇯🇵 日本节点
+    include-all: true
+    filter: (🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan)
+    type: url-test
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 🇺🇸 美国节点
+    include-all: true
+    filter: (🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)
+    type: url-test
+    interval: 300
+    tolerance: 150
+    url: https://i.ytimg.com/generate_204
+  - name: 🇹🇼 台湾节点
+    include-all: true
+    filter: (🇹🇼|台|新北|彰化|TW|Taiwan)
+    type: url-test
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 🇸🇬 新加坡节点
+    include-all: true
+    filter: (🇸🇬|新加坡|坡|狮城|SG|Singapore)
+    type: url-test
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 🇰🇷 韩国节点
+    include-all: true
+    filter: (🇰🇷|KR|Korea|KOR|首尔|韩|韓)
+    type: url-test
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 🇩🇪 德国节点
+    include-all: true
+    filter: (🇩🇪|德国|DE|Germany)
+    type: url-test
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 🇬🇧 英国节点
+    include-all: true
+    filter: (🇬🇧|英|伦敦|UK|U.K|United Kingdom)
+    type: url-test
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 🇷🇺 俄罗斯节点
+    include-all: true
+    filter: (俄|🇷🇺|RU|Russian|Moscow)
+    type: url-test
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 🇫🇷 法国节点
+    include-all: true
+    filter: (法|🇫🇷|FRA|巴黎|Paris)
+    type: url-test
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+  - name: 🇮🇳 印度节点
+    include-all: true
+    filter: (🇮🇳|印|印度|IN|India)
+    type: url-test
+    interval: 300
+    tolerance: 50
+    url: https://i.ytimg.com/generate_204
+
+rule-providers:
+  BanAD:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+    path: ./ruleset/BanAD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BanProgramAD:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
+    path: ./ruleset/BanProgramAD.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BanEasyList:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyList.list
+    path: ./ruleset/BanEasyList.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BanEasyListChina:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanEasyListChina.list
+    path: ./ruleset/BanEasyListChina.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Privacy:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Privacy/Privacy_Classical.yaml
+    path: ./ruleset/Privacy_Classical.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  PrimeVideo:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrimeVideo/PrimeVideo.yaml
+    path: ./ruleset/PrimeVideo.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ParamountPlus:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ParamountPlus/ParamountPlus.yaml
+    path: ./ruleset/ParamountPlus.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Hulu:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hulu/Hulu.yaml
+    path: ./ruleset/Hulu.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  HuluJP:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluJP/HuluJP.yaml
+    path: ./ruleset/HuluJP.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  HuluUSA:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HuluUSA/HuluUSA.yaml
+    path: ./ruleset/HuluUSA.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  HBOHK:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOHK/HBOHK.yaml
+    path: ./ruleset/HBOHK.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  HBOAsia:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOAsia/HBOAsia.yaml
+    path: ./ruleset/HBOAsia.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  HBOUSA:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBOUSA/HBOUSA.yaml
+    path: ./ruleset/HBOUSA.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  HBO:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/HBO/HBO.yaml
+    path: ./ruleset/HBO.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  OneDrive:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OneDrive/OneDrive.yaml
+    path: ./ruleset/OneDrive.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Microsoft:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
+    path: ./ruleset/Microsoft.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Apple:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.yaml
+    path: ./ruleset/Apple.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Telegram:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
+    path: ./ruleset/Telegram.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Game:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml
+    path: ./ruleset/Game.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  YouTube:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+    path: ./ruleset/YouTube.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Netflix:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.yaml
+    path: ./ruleset/Netflix.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Disney:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
+    path: ./ruleset/Disney.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Emby:
+    url: https://raw.githubusercontent.com/justdoiting/ClashRule/main/Emby.yaml
+    path: ./ruleset/Emby.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Bahamut:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
+    path: ./ruleset/Bahamut.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BiliBiliIntl:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBiliIntl/BiliBiliIntl.yaml
+    path: ./ruleset/BiliBiliIntl.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  BiliBili:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml
+    path: ./ruleset/BiliBili.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Spotify:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Spotify/Spotify.yaml
+    path: ./ruleset/Spotify.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  TikTok:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.yaml
+    path: ./ruleset/TikTok.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Outside:
+    url: https://raw.githubusercontent.com/cutethotw/ClashRule/main/Outside.list
+    path: ./ruleset/Outside.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ProxyGFWlist:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list
+    path: ./ruleset/ProxyGFWlist.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ProxyList:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy.list
+    path: ./ruleset/Proxy.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  GlobalMedia:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.yaml
+    path: ./ruleset/GlobalMedia.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ChinaMedia:
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMedia/ChinaMedia.yaml
+    path: ./ruleset/ChinaMedia.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Inside:
+    url: https://raw.githubusercontent.com/cutethotw/ClashRule/main/Inside.list
+    path: ./ruleset/Inside.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  LocalAreaNetwork:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
+    path: ./ruleset/LocalAreaNetwork.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  UnBan:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/UnBan.list
+    path: ./ruleset/UnBan.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  GoogleCN:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list
+    path: ./ruleset/GoogleCN.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ChinaIp:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaIp.list
+    path: ./ruleset/ChinaIp.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ChinaDomain:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list
+    path: ./ruleset/ChinaDomain.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  ChinaCompanyIp:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaCompanyIp.list
+    path: ./ruleset/ChinaCompanyIp.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  Download:
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Download.list
+    path: ./ruleset/Download.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  anti-ip-attribution:
+    url: https://raw.githubusercontent.com/lwd-temp/anti-ip-attribution/main/generated/rule-provider.yaml
+    path: ./ruleset/rule-provider.yaml
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  GeoIP2-CN:
+    url: https://cdn.jsdelivr.net/gh/soffchen/GeoIP2-CN@release/clash-rule-provider.yml
+    path: ./ruleset/clash-rule-provider.yml
+    behavior: ipcidr
+    interval: 86400
+    format: text
+    type: http
+
+rules:
+  - "RULE-SET,BanAD,🛑 广告拦截"
+  - "RULE-SET,BanProgramAD,🍃 应用净化"
+  - "RULE-SET,BanEasyList,🆎 AdBlock"
+  - "RULE-SET,BanEasyListChina,🆎 AdBlock"
+  - "RULE-SET,Privacy,🛡️ 隐私防护"
+  - "RULE-SET,PrimeVideo,📀 PrimeVideo"
+  - "RULE-SET,ParamountPlus,💽 ParamountPlus"
+  - "RULE-SET,Hulu,🍍 Hulu"
+  - "RULE-SET,HuluJP,🍍 Hulu"
+  - "RULE-SET,HuluUSA,🍍 Hulu"
+  - "RULE-SET,HBOHK,🎦 HBO"
+  - "RULE-SET,HBOAsia,🎦 HBO"
+  - "RULE-SET,HBOUSA,🎦 HBO"
+  - "RULE-SET,HBO,🎦 HBO"
+  - "RULE-SET,OneDrive,Ⓜ️ 微软云盘"
+  - "RULE-SET,Microsoft,Ⓜ️ 微软服务"
+  - "RULE-SET,Apple,🍎 苹果服务"
+  - "RULE-SET,Telegram,📲 Telegram"
+  - "RULE-SET,Game,🎮 游戏平台"
+  - "RULE-SET,YouTube,📹 YouTube"
+  - "RULE-SET,Netflix,🎥 Netflix"
+  - "RULE-SET,Disney,🎥 DisneyPlus"
+  - "RULE-SET,Emby,🎬 EMBY"
+  - "RULE-SET,Bahamut,📺 巴哈姆特"
+  - "RULE-SET,BiliBiliIntl,📺 Bilibili"
+  - "RULE-SET,BiliBili,📺 Bilibili"
+  - "RULE-SET,Spotify,🎵 Spotify"
+  - "RULE-SET,TikTok,🎵 TikTok"
+  - "RULE-SET,Outside,🚀 国外流量"
+  - "RULE-SET,ProxyGFWlist,🚀 国外流量"
+  - "RULE-SET,ProxyList,🚀 国外流量"
+  - "RULE-SET,GlobalMedia,🌍 国外媒体"
+  - "RULE-SET,ChinaMedia,🌏 国内媒体"
+  - "RULE-SET,Inside,🎯 国内流量"
+  - "RULE-SET,LocalAreaNetwork,🎯 国内流量"
+  - "RULE-SET,UnBan,🎯 国内流量"
+  - "RULE-SET,GoogleCN,🎯 国内流量"
+  - "RULE-SET,ChinaIp,🎯 国内流量"
+  - "RULE-SET,ChinaDomain,🎯 国内流量"
+  - "RULE-SET,ChinaCompanyIp,🎯 国内流量"
+  - "RULE-SET,Download,🎯 国内流量"
+  - "RULE-SET,anti-ip-attribution,🚩 社交平台IP归属地"
+  - "RULE-SET,GeoIP2-CN,🎯 国内流量"
+  - "MATCH,🐟 漏网之鱼"
