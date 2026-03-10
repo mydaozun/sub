@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang='zh-CN'>
+<head>
+    <meta charset='utf-8'/>
+    <meta name='viewport' content='width=device-width,initial-scale=1,viewport-fit=cover'>
+    <title>一键跳转 · 群组/频道 & 订阅</title>
+    <meta name='format-detection' content='telephone=no,email=no,address=no'>
+    
+    <!-- ================== CSS 样式部分 (已内嵌) ================== -->
+    <style>
+        /* 全局样式和变量 */
+        :root {
+            --bg-color: #121212;
+            --card-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --primary-color: #007bff;
+            --border-color: #333;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* 主容器 */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: var(--card-color);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        /* 头部 */
+        .header {
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            width: 64px;
+            height: 64px;
+            background-color: #333; /* 你可以在这里替换为你的 logo: background-image: url('你的logo图片链接'); */
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background-size: cover;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* 按钮网格 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 每行2个按钮 */
+            gap: 1rem;
+        }
+
+        /* 按钮通用样式 */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            color: white;
+            background-color: #3a3a3a;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn .icon {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* 不同按钮的颜色 */
+        .btn-1 { background-color: #007bff; }
+        .btn-2 { background-color: #28a745; }
+        .btn-3 { background-color: #17a2b8; }
+        .btn-4 { background-color: #ffc107; color: #333; }
+        .btn-5 { background-color: #dc3545; }
+        .btn-6 { background-color: #6f42c1; }
+        .btn-7 { background-color: #6c757d; }
+
+
+        /* 尾部 */
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* 弹窗样式 */
+        .mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none; /* 默认隐藏 */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .mask.show {
+            display: flex; /* JS控制显示 */
+        }
+
+        .panel {
+            background-color: var(--card-color);
+            padding: 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .panel h3 { margin-top: 0; }
+        .panel p { line-height: 1.6; }
+        .panel code {
+            display: block;
+            background-color: #333;
+            padding: 0.5rem;
+            border-radius: 4px;
+            word-break: break-all;
+            margin: 1rem 0;
+        }
+
+        .actions {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-direction: column;
+        }
+        .actions button {
+            padding: 0.7rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .actions .primary { background-color: var(--primary-color); color: white; }
+        .actions .secondary { background-color: #555; color: white; }
+
+        /* 移动端小屏幕适配 */
+        @media (max-width: 480px) {
+            .grid {
+                grid-template-columns: 1fr; /* 每行1个按钮 */
+            }
+            .container {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class='container'>
+        <div class='header'>
+            <div class='logo'></div>
+            <h1>官方入口 · 群组 / 频道 / 订阅</h1>
+        </div>
+        <div class='grid'>
+            <button id='btn-group' class='btn btn-2'><span class='icon'>👥</span> 官方群组</button>
+            <button id='btn-channel' class='btn btn-3'><span class='icon'>📣</span> 官方频道</button>
+            <button id='sub-open' class='btn btn-7'><span class='icon'>🔗</span> 打开订阅</button>
+            <button id='sub-copy' class='btn btn-1'><span class='icon'>📋</span> 复制订阅</button>
+            <button id='sub-sr' class='btn btn-5'><span class='icon'>🚀</span> 导入到 Shadowrocket</button>
+            <button id='sub-clash' class='btn btn-6'><span class='icon'>🧩</span> 导入到 Clash</button>
+            <button id='sub-v2n' class='btn btn-4'><span class='icon'>🖥️</span> 导入到 v2rayN</button>
+        </div>
+        <div class='footer'>© 2025 TG Landing • MIT</div>
+    </main>
+    
+    <div class='mask' id="mask-popup">
+        <div class='panel'>
+            <h3>当前内置浏览器可能拦截跳转</h3>
+            <p>请点击右上角 <b>…</b> 菜单，选择 <b>在浏览器中打开</b>。</p>
+            <p><code class='tg-link' id="popup-link"></code></p>
+            <div class='actions'>
+                <button class='primary copy-link' id="popup-copy">复制链接</button>
+                <button class='secondary close-mask' id="popup-close">关闭</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ================== JavaScript 功能部分 (已内嵌) ================== -->
+    <script>
+        // =================================================================
+        // ================== 在这里修改你的链接 ==================
+        // =================================================================
+        const config = {
+            groupLink: "https://t.me/pgkj0402",       // 你的群组链接
+            channelLink: "https://t.me/pgkj666",   // 你的频道链接
+            subscriptionLink: "https://peige.dpkj.qzz.io/dapei", // 你的订阅链接
+        };
+        // =================================================================
+        // ================== 修改区域结束 ==================
+        // =================================================================
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // 获取所有按钮元素
+            const btnGroup = document.getElementById("btn-group");
+            const btnChannel = document.getElementById("btn-channel");
+            const subOpen = document.getElementById("sub-open");
+            const subCopy = document.getElementById("sub-copy");
+            const subSr = document.getElementById("sub-sr");
+            const subClash = document.getElementById("sub-clash");
+            const subV2n = document.getElementById("sub-v2n");
+
+            // 弹窗元素
+            const maskPopup = document.getElementById("mask-popup");
+            const popupLink = document.getElementById("popup-link");
+            const popupCopy = document.getElementById("popup-copy");
+            const popupClose = document.getElementById("popup-close");
+
+            // 检查是否在内置浏览器
+            const isInternalBrowser = /MicroMessenger|QQ|Telegram|Weibo/i.test(navigator.userAgent);
+
+            // 封装跳转逻辑
+            function navigateTo(url) {
+                if (isInternalBrowser) {
+                    popupLink.textContent = url;
+                    maskPopup.classList.add("show");
+                } else {
+                    window.location.href = url;
+                }
+            }
+
+            // --- 绑定事件 ---
+            btnGroup.addEventListener("click", () => navigateTo(config.groupLink));
+            btnChannel.addEventListener("click", () => navigateTo(config.channelLink));
+            subOpen.addEventListener("click", () => navigateTo(config.subscriptionLink));
+
+            // 复制订阅
+            subCopy.addEventListener("click", () => {
+                navigator.clipboard.writeText(config.subscriptionLink).then(() => {
+                    const originalText = subCopy.innerHTML;
+                    subCopy.innerHTML = `<span class='icon'>✅</span> 已复制!`;
+                    setTimeout(() => {
+                        subCopy.innerHTML = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    alert("复制失败: " + err);
+                });
+            });
+
+            // 导入到 Shadowrocket
+            subSr.addEventListener("click", () => {
+                const srUrl = `shadowrocket://add-subscription?url=${encodeURIComponent(config.subscriptionLink)}&name=MySub`;
+                navigateTo(srUrl);
+            });
+
+            // 导入到 Clash
+            subClash.addEventListener("click", () => {
+                const clashUrl = `clash://install-config?url=${encodeURIComponent(config.subscriptionLink)}`;
+                navigateTo(clashUrl);
+            });
+            
+            // 导入到 v2rayN (通常是复制)
+            subV2n.addEventListener("click", () => {
+                navigator.clipboard.writeText(config.subscriptionLink).键，然后(() => {
+                    const originalText = subV2n.innerHTML;
+                    subV2n.innerHTML = `<span class='icon'>✅</span> 已复制!`;
+                    alert("订阅链接已复制到剪贴板，请到 v2rayN 中手动添加。");
+                    setTimeout(() => {
+                        subV2n.innerHTML = originalText;
+                    }, 3000);
+                }).catch(err => {
+                    alert("复制失败: " + err);
+                });
+            });
+
+            // --- 弹窗逻辑 ---
+            popupClose.addEventListener("click", () => maskPopup.classList.remove("show"));
+            popupCopy.addEventListener("click", () => {
+                navigator.clipboard.writeText(popupLink.textContent).键，然后(() => {
+                    popupCopy.textContent = "复制成功!";
+                    setTimeout(() => {
+                        popupCopy.textContent = "复制链接";
+                    }, 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
