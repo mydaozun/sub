@@ -196,7 +196,7 @@
             <button id='sub-clash' class='btn btn-6'><span class='icon'>🧩</span> 导入到 Clash</button>
             <button id='sub-v2n' class='btn btn-4'><span class='icon'>🖥️</span> 导入到 v2rayN</button>
         </div>
-        <div class='footer'>© 2025 TG Landing • MIT</div>
+        <div class='footer'>© 2026 TG Landing • MIT</div>
     </main>
     
     <div class='mask' id="mask-popup">
@@ -217,9 +217,9 @@
         // ================== 在这里修改你的链接 ==================
         // =================================================================
         const config = {
-            groupLink: "https://t.me/pgkj0402",       // 你的群组链接
-            channelLink: "https://t.me/pgkj666",   // 你的频道链接
-            subscriptionLink: "https://peige.dpkj.qzz.io/dapei", // 你的订阅链接
+            groupLink: "https://52dh.cc.cd",       // 你的群组链接
+            channelLink: "https://52dh.cc.cd",   // 你的频道链接
+            subscriptionLink: "https://edgetunnel.838325042.workers.dev/", // 你的订阅链接
         };
         // =================================================================
         // ================== 修改区域结束 ==================
@@ -287,7 +287,7 @@
             
             // 导入到 v2rayN (通常是复制)
             subV2n.addEventListener("click", () => {
-                navigator.clipboard.writeText(config.subscriptionLink).键，然后(() => {
+                navigator.clipboard.writeText(config.subscriptionLink).then(() => {
                     const originalText = subV2n.innerHTML;
                     subV2n.innerHTML = `<span class='icon'>✅</span> 已复制!`;
                     alert("订阅链接已复制到剪贴板，请到 v2rayN 中手动添加。");
@@ -302,7 +302,7 @@
             // --- 弹窗逻辑 ---
             popupClose.addEventListener("click", () => maskPopup.classList.remove("show"));
             popupCopy.addEventListener("click", () => {
-                navigator.clipboard.writeText(popupLink.textContent).键，然后(() => {
+                navigator.clipboard.writeText(popupLink.textContent).then(() => {
                     popupCopy.textContent = "复制成功!";
                     setTimeout(() => {
                         popupCopy.textContent = "复制链接";
